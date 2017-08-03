@@ -13,7 +13,10 @@ module.exports = {
     publicPath: '/static/'
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      API: process.ENV === 'dev' ? 'localhost:3000' : 'api.amazon.com'
+    })
   ],
   module: {
     loaders: [{
