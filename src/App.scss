@@ -1,0 +1,32 @@
+:local(.app) {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+:local(.button) {
+  border: 0;
+  background-color: #f4d078;
+  box-shadow:none;
+  border-radius: 2px;
+  margin: 100px 0 0 100px;
+  height: 30px;
+  width: 120px;
+}
+
+:local(.confirmationTop) {
+  background-color: #232f3e;
+  height: 85px;
+}
+
+:local(.amazonMusicLogo) {
+  padding-left: 30px;
+  padding-top: 26px;
+}
+
+:local(.signupButton) {
+  height: 50px;
+  padding: 50px 0 0 100px;
+  width: 120px;
+}

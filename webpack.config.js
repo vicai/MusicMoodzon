@@ -1,3 +1,4 @@
+var autoprefixer = require('autoprefixer');
 var path = require('path');
 var webpack = require('webpack');
 
@@ -19,10 +20,18 @@ module.exports = {
     })
   ],
   module: {
-    loaders: [{
-      test: /\.js$/,
-      loaders: ['react-hot', 'babel'],
-      include: path.join(__dirname, 'src')
-    }]
-  }
+    loaders: [
+      {
+        test: /\.js$/,
+        loaders: ['react-hot', 'babel'],
+        include: path.join(__dirname, 'src')
+      },
+      {
+        test: /\.scss$/,
+        loaders: ['style', 'css?localIdentName=freebee-[name]-[local]', 'postcss', 'sass'],
+        include: path.join(__dirname, 'src')
+      },
+    ]
+  },
+  postcss: [autoprefixer],
 };
