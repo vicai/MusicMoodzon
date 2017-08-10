@@ -1,12 +1,12 @@
 {
-  "name": "verizon-freebee-app",
+  "name": "mood-recommendation-app",
   "version": "1.0.0",
-  "description": "web app for verizon freebee",
+  "description": "web app for recommending music based on our mood",
   "scripts": {
     "start": "node server.js",
     "lint": "eslint src"
   },
-  "author": "Vic Cai",
+  "author": "weiqic/atamanam",
   "devDependencies": {
     "babel-core": "^6.0.20",
     "babel-eslint": "^4.1.3",
@@ -21,9 +21,9 @@
     "node-sass": "^3.8.0",
     "postcss-loader": "^0.9.1",
     "react-addons-test-utils": "^0.14.0",
+    "react-hot-loader": "^1.3.0",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
-    "react-hot-loader": "^1.3.0",
     "webpack": "^1.12.2",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.10.0"
@@ -39,6 +39,7 @@
     "node-sass": "^4.5.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-redux": "^5.0.6",
     "react-router-dom": "next",
     "request": "^2.81.0"
   }

@@ -1,0 +1,17 @@
+@import '../variables';
+
+:local(.choiceButton) {
+  position: absolute;
+  top: 500px;
+}
+
+:local(.facePage) {
+  display: flex;
+  flex-direction: column;
+}
+
+:local(.placeholder) {
+  height: 500px;
+  width: 500px;
+  color: #0000fe;
+}

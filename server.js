@@ -37,6 +37,59 @@ app.get('/freebee/eligibility', function (req, res) {
   }).pipe(res);
 });
 
+
+/*
+Prototype for redemption token design
+ */
+const REDEMPTION_INFO_BY_TOKEN = {}; //REDIS OR SOMETHING ELSE
+
+function generateRedemptionToken() {
+  return "7d9d2ee0-52f5-48f1-977d-6eca9b74a1c8" //use node-guid or something like that
+}
+
+function storeRedemptionInfo(campaignId, phoneNumber) {
+  const token = generateRedemptionToken()
+  REDEMPTION_INFO_BY_TOKEN[token] = {
+    campaignId,
+    phoneNumber,
+  };
+  
+  return token
+}
+
+function getRedemptionInfo() {
+  return REDEMPTION_INFO_BY_TOKEN[token];
+}
+
+app.get('/eligibility', function (req, res) {
+  const { phoneNumber, accessToken } = req.query;
+  request({
+    withCredentials: true,
+    url: `https://perks.svcs.verizon.com/mobileperks/redeem/${campaign_id}?mdn=${phoneNumber}`,
+    headers: {'Authorization': `Bearer ${accessToken}`}
+  }).pipe(function(){
+    const redemptionToken = storeRedemptionInfo(campaign_id, phoneNumber);
+    //give the response the token
+  })
+});
+
+app.get('/redeem', function (req, res) {
+  const { accessToken, redemptionToken } = req.query;
+  const redemptionInfo = getRedemptionInfo();
+  const phoneNumber = redemptionInfo.phoneNumber;
+  
+  request({
+    withCredentials: true,
+    url: `TODO`,
+    headers: {'Authorization': `Bearer ${accessToken}`}
+  }).pipe(res);
+});
+/*
+Prototype for redemption token design end
+ */
+
+
+
 app.use(require('webpack-dev-middleware')(compiler, {
   publicPath: config.output.publicPath
 }));

@@ -1,0 +1,23 @@
+@import '../variables';
+
+:local(.button) {
+  border: 0;
+  background-color: $color-blue;
+  box-shadow:none;
+  border-radius: 5px;
+  font-size: 30px;
+  height: 100px;
+  width: 360px;
+}
+
+:local(.buttonGroup) {
+  display: flex;
+}
+
+:local(.left) {
+  padding: 10px;
+}
+
+:local(.right) {
+  padding: 10px;
+}

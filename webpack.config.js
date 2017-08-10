@@ -3,6 +3,9 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
+  resolve: {
+    extensions: ['', '.js', '.jsx', '.json', '', '.svg', '.jpeg', '.jpg', '.png']
+  },
   devtool: 'cheap-module-eval-source-map',
   entry: [
     'webpack-hot-middleware/client',
@@ -22,7 +25,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         loaders: ['react-hot', 'babel'],
         include: path.join(__dirname, 'src')
       },
