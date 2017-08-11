@@ -1,39 +1,62 @@
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 import React, { Component } from 'react';
 import Webcam from 'react-webcam';
 import { decode } from 'base64-arraybuffer';
 
+import { addScreenshot, setMood } from '../action';
+import {moodSelector, screenshotSelector} from '../reducer';
 import MusicMoodzonAPIUtils from '../utils/MusicMoodzonAPIUtils'
 import styles from './WebcamCapture.scss';
 
-export default class WebcamCapture extends React.Component {
+export class WebcamCapture extends React.Component {
   setRef = (webcam) => {
     this.webcam = webcam;
   }
 
   capture = () => {
-    const imageSrc = decode(this.webcam.getScreenshot().substring(23).replace(' ', '+'));
+    const screenshot = this.webcam.getScreenshot();
+    this.props.addScreenshot({ screenshot });
+    const imageSrc = decode(screenshot.substring(23).replace(' ', '+'));
     MusicMoodzonAPIUtils.sendImg(imageSrc).then((moodData) => {
-      const mood = moodData.getIn(['data', 0, 'scores']).entrySeq().reduce((result, entry) => {
+      const dominateMoodEntry = moodData.getIn(['data', 0, 'scores']).entrySeq().reduce((result, entry) => {
         if (entry[1] > result[1]) {
           result = entry;
         }
         return result;
       }, ['', 0]);
-      console.log(mood[0]);
+      const mood = dominateMoodEntry[0];
+      this.props.setMood({ mood });
     });
   };
 
   render() {
+    const { mood, screenshot } = this.props;
+    console.log('***mood', mood);
     return (
       <div className={styles.camContainer}>
         <Webcam
           audio={false}
-          height={500}
+          height={800}
           ref={this.setRef}
           screenshotFormat="image/jpeg"
-          width={500}/>
+          width={800} />
         <button className={styles.roundButton} onClick={this.capture}>Capture photo</button>
+        <div className={styles.imgContainer}>
+          <img className={styles.img} src={screenshot} height={400} width={400}/>
+        </div>
+        <div>Mood: {mood}</div>
       </div>
     );
   }
 }
+
+const selector = createStructuredSelector({
+  mood: moodSelector,
+  screenshot: screenshotSelector,
+});
+
+export default connect(selector, {
+  addScreenshot,
+  setMood,
+})(WebcamCapture);
