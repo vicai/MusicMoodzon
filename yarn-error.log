@@ -15,9 +15,9 @@ Platform:
 
 npm manifest: 
   {
-    "name": "verizon-freebee-app",
+    "name": "verizon-moodzon-app",
     "version": "1.0.0",
-    "description": "web app for verizon freebee",
+    "description": "web app for verizon moodzon",
     "scripts": {
       "start": "node server.js",
       "lint": "eslint src"

@@ -32,18 +32,17 @@ export class WebcamCapture extends React.Component {
 
   render() {
     const { mood, screenshot } = this.props;
-    console.log('***mood', mood);
     return (
       <div className={styles.camContainer}>
         <Webcam
           audio={false}
-          height={800}
+          height={300}
           ref={this.setRef}
           screenshotFormat="image/jpeg"
-          width={800} />
+          width={300} />
         <button className={styles.roundButton} onClick={this.capture}>Capture photo</button>
         <div className={styles.imgContainer}>
-          <img className={styles.img} src={screenshot} height={400} width={400}/>
+          <img className={styles.img} src={screenshot} height={150} width={200}/>
         </div>
         <div>Mood: {mood}</div>
       </div>

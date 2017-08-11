@@ -19,7 +19,7 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
-      API: process.ENV === 'dev' ? 'localhost:3000' : 'api.amazon.com'
+      API: process.ENV === 'dev' ? 'localhost:3002' : 'api.amazon.com'
     })
   ],
   module: {
@@ -31,7 +31,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loaders: ['style', 'css?localIdentName=freebee-[name]-[local]', 'postcss', 'sass'],
+        loaders: ['style', 'css?localIdentName=moodzon-[name]-[local]', 'postcss', 'sass'],
         include: path.join(__dirname, 'src')
       },
     ]

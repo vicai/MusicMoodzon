@@ -20,7 +20,7 @@ app.get('/ping', function (req, res) {
   res.json({msg: 'Hello, Amazon!'})
 });
 
-app.get('/freebee/token', function (req, res) {
+app.get('/moodzon/token', function (req, res) {
   request({
     method: 'post',
     uri: 'https://auth.svcs.verizon.com/vzconnect/token?grant_type=client_credentials',
@@ -28,7 +28,7 @@ app.get('/freebee/token', function (req, res) {
   }).pipe(res);
 });
 
-app.get('/freebee/eligibility', function (req, res) {
+app.get('/moodzon/eligibility', function (req, res) {
   const { phoneNumber, accessToken } = req.query;
   request({
     withCredentials: true,
@@ -100,10 +100,10 @@ app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.listen(3000, function(err) {
+app.listen(3002, function(err) {
   if (err) {
     return console.error(err);
   }
 
-  console.log('Listening at http://localhost:3000/');
+  console.log('Listening at http://localhost:3002/');
 });
