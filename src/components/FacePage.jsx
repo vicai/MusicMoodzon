@@ -8,11 +8,9 @@ export default class FacePage extends Component {
   render() {
     return (
       <div className={styles.facePage}>
-        	<div class="container" id="Cam">
-    			<div id="my_camera">
-	    			<WebcamCapture />
-    			</div>
-			</div>
+        	<div class={styles.webcamContainer}>
+            <WebcamCapture />
+          </div>
         <Choice className={styles.choiceButton} />
       </div>
     );

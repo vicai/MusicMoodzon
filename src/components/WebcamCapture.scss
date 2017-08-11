@@ -1,0 +1,18 @@
+@import '../variables';
+
+:local(.camContainer) {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
+:local(.roundButton) {
+  border: 0;
+  background-color: $color-blue;
+  box-shadow:none;
+  border-radius: 5px;
+  font-size: 30px;
+  height: 100px;
+  width: 360px;
+}

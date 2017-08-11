@@ -7,10 +7,11 @@ export default class MusicMoodzonAPIUtils {
     return Promise.resolve(axios({
       method: 'POST',
       url: 'https://api.projectoxford.ai/emotion/v1.0/recognize',
-      headers: {'Content-Type': 'application/octet-stream','Accept':'text/html,application/xhtml+xml,application/xml','Ocp-Apim-Subscription-Key':'ac42a8d3b6d34345931c3ac02c5be878'},
-      data: btoa(imagesrc),
+      headers: {'Content-Type': 'application/octet-stream','Accept':'text/html,application/json','Ocp-Apim-Subscription-Key':'ac42a8d3b6d34345931c3ac02c5be878'},
+      data: imagesrc,
+      contentType: 'application/json',
     }).then(response => {
-      return Immutable.fromJS(response).getIn(['data', 'access_token']);
+      return Immutable.fromJS(response);
     }));
   }
 }

@@ -22,7 +22,7 @@ Webcam.attach('#my_camera');
 function SaveSnap(){
     document.getElementById("loading").innerHTML="Analyzing, please wait...";
     var file = document.getElementById("base64image").src.substring(23).replace(' ', '+');
-	//var img = Base64Binary.decodeArrayBuffer(file);
+	var img = Base64Binary.decodeArrayBuffer(file);
 	var img=file;
     var ajax = new XMLHttpRequest();
     ajax.addEventListener("load", function(event) { uploadcomplete(event);}, false);
